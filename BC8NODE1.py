@@ -1,5 +1,13 @@
-import tkinter as tk
-from tkinter import messagebox, ttk
+#import tkinter as tk
+#from tkinter import messagebox, ttk
+#-chatgpt code --------------
+try:
+    import tkinter as tk
+    from tkinter import messagebox, ttk
+    GUI_AVAILABLE = True
+except:
+    GUI_AVAILABLE = False
+    #-----------------
 import hashlib
 import json
 import time
