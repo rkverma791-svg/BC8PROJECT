@@ -427,7 +427,11 @@ threading.Thread(target=start_server, daemon=True).start()
 threading.Thread(target=auto_sync, daemon=True).start()
 
 # ---------------- GUI ----------------
-
+if GUI_AVAILABLE:
+    root = tk.Tk()
+    root.title("BC8 Node 1")
+    ...
+    root.mainloop()
 root = tk.Tk()
 root.title("BC7 Node 1")
 root.geometry("500x930")
