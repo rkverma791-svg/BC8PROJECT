@@ -15,8 +15,7 @@ import requests
 from flask import Flask, request, jsonify
 
 # ---------------- NODE CONFIG ----------------
-NODE_IP = "0.0.0.0"
-PORT = 5000
+PORT = int(os.environ.get("PORT", 5000))
 
 PEER_NODES = []
 
@@ -118,6 +117,10 @@ def sync_chain():
 # ---------------- SERVER ----------------
 app = Flask(__name__)
 
+@app.route("/")
+def home():
+    return "BC8 Blockchain Node Running"
+
 @app.route("/chain", methods=["GET"])
 def get_chain():
     return jsonify(blockchain)
@@ -179,10 +182,16 @@ if GUI_AVAILABLE:
     key.pack()
 
     def send_tx():
+        try:
+            amt = int(amount.get())
+        except:
+            messagebox.showerror("Error", "Invalid amount")
+            return
+
         res = add_transaction(
             sender.get(),
             receiver.get(),
-            int(amount.get()),
+            amt,
             key.get()
         )
         messagebox.showinfo("Result", res)
