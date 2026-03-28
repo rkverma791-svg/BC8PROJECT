@@ -427,10 +427,20 @@ threading.Thread(target=start_server, daemon=True).start()
 threading.Thread(target=auto_sync, daemon=True).start()
 
 # ---------------- GUI ----------------
-if GUI_AVAILABLE:
+    if GUI_AVAILABLE:
     root = tk.Tk()
     root.title("BC8 Node 1")
-    ...
+    root.geometry("500x930")
+    root.configure(bg="light pink")
+
+    # 👇👇👇 पूरा GUI code यहीं होना चाहिए 👇👇👇
+
+    tk.Label(root, text="Sender").pack()
+    sender_entry = tk.Entry(root)
+    sender_entry.pack()
+
+    # बाकी पूरा code
+
     root.mainloop()
 root = tk.Tk()
 root.title("BC7 Node 1")
